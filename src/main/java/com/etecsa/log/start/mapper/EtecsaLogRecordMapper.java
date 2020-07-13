@@ -2,7 +2,7 @@ package com.etecsa.log.start.mapper;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.etecsa.log.start.domain.LogRecordVo;
+import com.etecsa.feign.log.domin.LogRecordVo;
 import com.etecsa.log.start.model.EtecsaLogRecord;
 import org.apache.ibatis.annotations.Mapper;
 

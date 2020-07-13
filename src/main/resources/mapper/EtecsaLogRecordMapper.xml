@@ -54,7 +54,7 @@
     <!-- 更新时间 -->
     <result column="UPDATED_TIME" property="updatedTime" jdbcType="TIMESTAMP" />
   </resultMap>
-    <select id="page" resultType="com.etecsa.log.start.domain.LogRecordVo">
+    <select id="page" resultType="com.etecsa.feign.log.domin.LogRecordVo">
       select
       ID as id,
       SERVER_NAME as serverName,

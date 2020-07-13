@@ -133,6 +133,12 @@
             <artifactId>maven-compiler-plugin</artifactId>
             <version>3.8.1</version>
         </dependency>
+        <!--依赖feign工程-->
+        <dependency>
+            <groupId>com.etecsa</groupId>
+            <artifactId>etecsa-feign-log</artifactId>
+            <version>1.0.0-release</version>
+        </dependency>
     </dependencies>
 
     <dependencyManagement>

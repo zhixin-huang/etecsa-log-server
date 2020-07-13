@@ -2,9 +2,9 @@ package com.etecsa.log.start.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.etecsa.log.start.domain.LogRecordDto;
-import com.etecsa.log.start.domain.LogRecordListDto;
-import com.etecsa.log.start.domain.LogRecordVo;
+import com.etecsa.feign.log.domin.LogRecordDto;
+import com.etecsa.feign.log.domin.LogRecordListDto;
+import com.etecsa.feign.log.domin.LogRecordVo;
 import com.etecsa.log.start.mapper.EtecsaLogRecordMapper;
 import com.etecsa.log.start.model.EtecsaLogRecord;
 import com.etecsa.log.start.service.EtecsaLogRecordService;
@@ -74,4 +74,6 @@ public class EtecsaLogRecordServiceImpl implements EtecsaLogRecordService {
 
         return page;
     }
+
+
 }

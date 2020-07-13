@@ -1,9 +1,9 @@
 package com.etecsa.log.start.service;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.etecsa.log.start.domain.LogRecordDto;
-import com.etecsa.log.start.domain.LogRecordListDto;
-import com.etecsa.log.start.domain.LogRecordVo;
+import com.etecsa.feign.log.domin.LogRecordDto;
+import com.etecsa.feign.log.domin.LogRecordListDto;
+import com.etecsa.feign.log.domin.LogRecordVo;
 
 /**
  * @author zhixin.huang
