@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.etecsa.log.start.mapper.EtecsaLogRecordMapper" >
+  <resultMap id="BaseResultMap" type="com.etecsa.log.start.model.EtecsaLogRecord" >
+
+    <!-- 主键 -->
+    <id column="ID" property="id" jdbcType="VARCHAR" />
+
+    <!-- 服务名 -->
+    <result column="SERVER_NAME" property="serverName" jdbcType="VARCHAR" />
+
+    <!-- 实例编号 -->
+    <result column="SERVER_INSTANCE" property="serverInstance" jdbcType="VARCHAR" />
+
+    <!-- 调用方法 -->
+    <result column="SERVER_METHOD" property="serverMethod" jdbcType="VARCHAR" />
+
+    <!-- 操作人id -->
+    <result column="OPERATOR_ID" property="operatorId" jdbcType="VARCHAR" />
+
+    <!-- 操作人ip -->
+    <result column="OPERATOR_IP" property="operatorIp" jdbcType="VARCHAR" />
+
+    <!-- 操作人姓名 -->
+    <result column="OPERATOR_NAME" property="operatorName" jdbcType="VARCHAR" />
+
+    <!-- 操作类型 -->
+    <result column="OPERATED_TYPE" property="operatedType" jdbcType="VARCHAR" />
+
+    <!-- 操作模块 -->
+    <result column="OPERATED_MOULD" property="operatedMould" jdbcType="VARCHAR" />
+
+    <!-- 操作内容 -->
+    <result column="CONTENT" property="content" jdbcType="VARCHAR" />
+
+    <!-- 请求参数 -->
+    <result column="REQUEST_PARAM" property="requestParam" jdbcType="VARCHAR" />
+
+    <!-- 备注 -->
+    <result column="REMARK" property="remark" jdbcType="VARCHAR" />
+
+    <!-- 乐观锁 -->
+    <result column="REVISION" property="revision" jdbcType="INTEGER" />
+
+    <!-- 创建人 -->
+    <result column="CREATED_BY" property="createdBy" jdbcType="VARCHAR" />
+
+    <!-- 创建时间 -->
+    <result column="CREATED_TIME" property="createdTime" jdbcType="TIMESTAMP" />
+
+    <!-- 更新人 -->
+    <result column="UPDATED_BY" property="updatedBy" jdbcType="VARCHAR" />
+
+    <!-- 更新时间 -->
+    <result column="UPDATED_TIME" property="updatedTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+    <select id="page" resultType="com.etecsa.log.start.domain.LogRecordVo">
+      select
+      ID as id,
+      SERVER_NAME as serverName,
+      SERVER_INSTANCE as serverInstance,
+      SERVER_METHOD as serverMethod,
+      OPERATOR_ID as operatorId,
+      OPERATOR_IP as operatorIp,
+      OPERATOR_NAME as operatorName,
+      OPERATED_TYPE as operatorType,
+      OPERATED_MOULD as operatedMould,
+      CONTENT as content,
+      REQUEST_PARAM as requestParam,
+      REMARK as remark,
+      CREATED_TIME as createdTime,
+      CREATED_BY as createdBy,
+      UPDATED_TIME as updatedTime,
+      UPDATED_BY as updateBy
+      from etecsa_log_record
+      ${ew.customSqlSegment}
+      order by CREATED_TIME desc limit #{pageNo},#{pageSize}
+    </select>
+</mapper>

@@ -1,0 +1,73 @@
+server:
+  port: 8769
+
+spring:
+  jackson:
+    serialization:
+      indent-output: true
+  cloud:
+    config:
+      enabled: false
+    loadbalancer:
+      retry:
+        enabled: false
+  application:
+    name: etecsa-log-server
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://192.168.0.123:3306/etecsa-log-server?useUnicode=true&characterEncoding=utf8&allowMultiQueries=true
+    username: root
+    password: 123456
+    druid:
+      initial-size: 5
+      min-idle: 5
+      maxActive: 20
+      maxWait: 60000
+      timeBetweenEvictionRunsMillis: 60000
+      minEvictableIdleTimeMillis: 300000
+      validationQuery: SELECT 1 FROM DUAL
+      testWhileIdle: true
+      testOnBorrow: false
+      testOnReturn: false
+      poolPreparedStatements: true
+      maxPoolPreparedStatementPerConnectionSize: 20
+      filters: stat,wall
+      connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
+      web-stat-filter:
+        enabled: true
+  task:
+    execution:
+      pool:
+        core-size: 8
+        max-size: 10
+        queue-capacity: 50
+
+mybatis-plus:
+  mapper-locations: classpath:/mapper/*Mapper.xml
+  typeAliasesPackage: com.etecsa.evaluate.start.model
+  global-config:
+    mapper-registry-cache:
+    db-config:
+      id-type: uuid
+      field-strategy: default
+      table-underline: true
+      logic-delete-value: 0
+      logic-not-delete-value: 1
+  configuration:
+    #配置返回数据库(column下划线命名&&返回java实体是驼峰命名)，自动匹配无需as（没开启这个，SQL需要写as： select user_id as userId）
+    map-underscore-to-camel-case: true
+    cache-enabled: false
+    #配置JdbcTypeForNull, oracle数据库必须配置
+    jdbc-type-for-null: 'null'
+    call-setters-on-nulls: true
+
+eureka:
+  instance:
+    prefer-ip-address: true
+    instance-id: 192.168.0.123:8769
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    service-url:
+      defaultZone: http://192.168.0.123:8761/eureka
