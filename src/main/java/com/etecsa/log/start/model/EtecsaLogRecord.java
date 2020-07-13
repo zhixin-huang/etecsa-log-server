@@ -1,16 +1,13 @@
 package com.etecsa.log.start.model;
 
-import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableField;
-import com.baomidou.mybatisplus.annotation.TableId;
-import com.baomidou.mybatisplus.annotation.TableName;
+import com.baomidou.mybatisplus.annotation.*;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
-import java.io.Serializable;
-import java.time.LocalDateTime;
-import java.util.Date;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
+
+import java.io.Serializable;
+import java.time.LocalDateTime;
 
 /**
  * Table: etecsa_log_record
@@ -110,7 +107,7 @@ public class EtecsaLogRecord extends Model<EtecsaLogRecord> {
     /**
      * 创建时间
      */
-    @TableField(value = "CREATED_TIME")
+    @TableField(value = "CREATED_TIME", fill = FieldFill.INSERT)
     private LocalDateTime createdTime;
 
     /**
@@ -122,7 +119,7 @@ public class EtecsaLogRecord extends Model<EtecsaLogRecord> {
     /**
      * 更新时间
      */
-    @TableField(value = "UPDATED_TIME")
+    @TableField(value = "UPDATED_TIME", fill = FieldFill.UPDATE)
     private LocalDateTime updatedTime;
 
     private static final long serialVersionUID = 1L;
