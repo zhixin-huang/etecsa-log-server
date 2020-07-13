@@ -35,7 +35,6 @@ public class EtecsaLogRecordController {
         return RestResponse.success(etecsaLogRecordServiceImpl.save(logRecordDto));
     }
 
-
     @PostMapping("/evaluate/list")
     @ApiOperation(httpMethod = "POST", value = "日志记录分页列表")
     public RestResponse<Page<LogRecordVo>> listEvaluate(@RequestBody LogRecordListDto logRecordListDto) {
