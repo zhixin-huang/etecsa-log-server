@@ -68,7 +68,10 @@ public class EtecsaLogRecordServiceImpl implements EtecsaLogRecordService {
         }
 
         List<LogRecordVo> list = etecsaLogRecordMapper.page((logRecordListDto.getPageNo() - 1) * logRecordListDto.getPageSize(), logRecordListDto.getPageSize(), queryWrapper);
+        long total = (long) etecsaLogRecordMapper.selectCount(queryWrapper);
+        Page<LogRecordVo> page = new Page<>(logRecordListDto.getPageNo(), logRecordListDto.getPageSize(), total);
+        page.setRecords(list);
 
-        return null;
+        return page;
     }
 }
