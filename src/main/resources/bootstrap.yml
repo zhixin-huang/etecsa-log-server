@@ -71,3 +71,30 @@ eureka:
     register-with-eureka: true
     service-url:
       defaultZone: http://192.168.0.123:8761/eureka
+
+
+# 开启feign支持hystrix,
+feign:
+  hystrix:
+    enabled: true
+
+#配置这个是无效的，因为feign 也有一个超时时间的设置，
+#当然feign底层是 ribbon的封装，所以 直接配置ribbon，ribbon默认超时也是1秒。
+#所以这里都是强制要求，ribbon的超时时间要大于hystrix的超时时间，
+#否则 hystrix自定义的超时时间毫无意义。所以还得加个 ribbon超时时间设置
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 3000
+      circuitBreaker:
+        requestVolumeThreshold: 3 #默认20 ，熔断的阈值，如何user服务报错满足3次，熔断器就会打开，就算order之后请求正确的数据也不行。
+        sleepWindowInMilliseconds: 8000 #默认5S ， 等5S之后熔断器会处于半开状态，然后下一次请求的正确和错误讲决定熔断器是否真的关闭和是否继续打开
+
+
+
+ribbon:
+  ReadTimeout: 10000
+  ConnectTimeout: 10000
