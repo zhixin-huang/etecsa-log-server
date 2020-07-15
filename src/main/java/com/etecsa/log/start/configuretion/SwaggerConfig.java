@@ -18,16 +18,16 @@ public class SwaggerConfig {
 	public Docket createRestApi() {
 	        return new Docket(DocumentationType.SWAGGER_2).apiInfo(apiInfo())
 	            .select()
-	            .apis(RequestHandlerSelectors.basePackage("com.etecsa.evaluate.start.controller"))
+	            .apis(RequestHandlerSelectors.basePackage("com.etecsa.log.start.controller"))
 	            .paths(PathSelectors.any()).build();
 	}
 
 
 	private ApiInfo apiInfo() {
 	    return new ApiInfoBuilder()
-	        .title("通用评价系统组件（etecsa-evaluate-server）Swagger 接口文档")
-	        .description("etecsa-evaluate-server")
-	        .termsOfServiceUrl("http://192.168.1.2:8768/druid")
+	        .title("通用日志系统组件（etecsa-log-server）Swagger 接口文档")
+	        .description("etecsa-log-server")
+	        .termsOfServiceUrl("http://192.168.1.2:8769/druid")
 	        .version("1.0.0").build();
 	    }
 

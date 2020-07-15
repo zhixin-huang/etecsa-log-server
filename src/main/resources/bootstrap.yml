@@ -16,7 +16,7 @@ spring:
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://192.168.0.123:3306/etecsa-log-server?useUnicode=true&characterEncoding=utf8&allowMultiQueries=true
+    url: jdbc:mysql://localhost:3306/etecsa-log-server?useUnicode=true&characterEncoding=utf8&allowMultiQueries=true
     username: root
     password: 123456
     druid:
@@ -45,7 +45,7 @@ spring:
 
 mybatis-plus:
   mapper-locations: classpath:/mapper/*Mapper.xml
-  typeAliasesPackage: com.etecsa.evaluate.start.model
+  typeAliasesPackage: com.etecsa.log.start.model
   global-config:
     mapper-registry-cache:
     db-config:
@@ -65,12 +65,12 @@ mybatis-plus:
 eureka:
   instance:
     prefer-ip-address: true
-    instance-id: 192.168.0.123:8769
+    instance-id: 192.168.0.132:8769
   client:
     fetch-registry: true
     register-with-eureka: true
     service-url:
-      defaultZone: http://192.168.0.123:8761/eureka
+      defaultZone: http://192.168.0.132:8761/eureka
 
 
 
